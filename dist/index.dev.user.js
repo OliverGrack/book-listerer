@@ -1,11 +1,11 @@
 // ==UserScript==
-// @name        webpack-userscript-template
-// @namespace   https://trim21.me/
+// @name        book-listerer
+// @namespace   https://olii.dev/
 // @version     0.0.2
-// @author      Trim21 <trim21me@gmail.com>
+// @author      Oliver Grack <hello@olii.dev>
 // @source      https://github.com/Trim21/webpack-userscript-template
-// @match       http://www.example.com/*
-// @require     file://C:\Dev\GitHub\tampermonkey-userscript-template\dist\index.prod.user.js
+// @match       https://www.thalia.at/*
+// @require     file://C:\Users\ogstoettenbauer\pr\book-listerer\dist\index.prod.user.js
 // @grant       GM.xmlHttpRequest
 // @connect     httpbin.org
 // @run-at      document-end

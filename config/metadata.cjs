@@ -1,14 +1,14 @@
 const { author, dependencies, repository, version } = require('../package.json')
 
 module.exports = {
-  name: 'webpack-userscript-template',
-  namespace: 'https://trim21.me/',
+  name: 'book-listerer',
+  namespace: 'https://olii.dev/',
   version: version,
   author: author,
   source: repository.url,
   // 'license': 'MIT',
   match: [
-    'http://www.example.com/*'
+    'https://www.thalia.at/*'
   ],
   require: [],
   grant: [

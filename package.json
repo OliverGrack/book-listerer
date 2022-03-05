@@ -1,10 +1,10 @@
 {
-  "name": "webpack-userscript-template",
-  "description": "Build your UserScript with webpack",
+  "name": "book-listerer",
+  "description": "Export your thalia list",
   "version": "0.0.2",
   "author": {
-    "name": "Trim21",
-    "email": "trim21me@gmail.com"
+    "name": "Oliver Grack",
+    "email": "hello@olii.dev"
   },
   "eslintIgnore": [
     "dist/*.js",
@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Trim21/webpack-userscript-template"
+    "url": "https://github.com/OliverGrack/book-listerer"
   },
   "private": true,
   "devDependencies": {
@@ -32,5 +32,8 @@
     "webpack": "5.51.1",
     "webpack-cli": "^4.8.0",
     "webpack-merge": "5.8.0"
+  },
+  "dependencies": {
+    "acorn": "^8.4.1"
   }
 }
