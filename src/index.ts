@@ -18,7 +18,6 @@ async function main() {
             const map = Object.fromEntries(list.map(it => [it.id, it]));
             storageSet('overviews', map);
             storageSet('notScannedIds', list.filter(it => it.link !== "").map(it => it.id));
-
             console.log(JSON.stringify(list));
             console.log(list);
             continueScan();
@@ -43,10 +42,14 @@ async function main() {
             continueScan();
         }
     } else if (currentUrl === "https://www.thalia.at/") {
-        // thalia redirected to start page, since book not available anymore.
-        const [_, ...notScannedIds] = storageGet('notScannedIds') ?? [''];
-        storageSet('notScannedIds', notScannedIds);
-        continueScan();
+        const notScannedIds = new Set(storageGet('notScannedIds'));
+        if (notScannedIds) {
+            // thalia redirected to start page, since the book is not available anymore.
+            // Therefore, we skip this book and go on with the next one.
+            const [_, ...notScannedIds] = storageGet('notScannedIds') ?? [''];
+            storageSet('notScannedIds', notScannedIds);
+            continueScan();
+        }
     }
 }
 
@@ -68,10 +71,13 @@ function continueScan() {
         const date = new Date().toISOString();
         createButton('Download as CSV', () => {
             downloadTextFile(`book-listerer-export-${date}.csv`, recordsToCsv(bookAllData));
-        })
+        });
         createButton('Download as JSON', () => {
             downloadTextFile(`book-listerer-export-${date}.json`, JSON.stringify(bookAllData, null, 2));
-        })
+        });
+        storageSet('notScannedIds', undefined);
+        storageSet('overviews', undefined);
+        storageSet('details', undefined);
     } else {
         createResultDisplay(`${notScannedIds.length} books remaining`);
         visitNextBook();
